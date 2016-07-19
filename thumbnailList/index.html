@@ -1,0 +1,78 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://fb.me/react-15.2.1.js"></script>
+  <script src="https://fb.me/react-dom-15.2.1.js"></script>
+  <script  src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-5 target">
+
+      </div>
+    </div>
+  </div>
+</body>
+
+<script type="text/jsx">
+
+  var Badge = React.createClass({
+    render: function() {
+      return <button className="btn btn-primary" type="button">
+        {this.props.title} <span className="badge">{this.props.number}</span>
+      </button>;
+    }
+  });
+
+  var Thumbnail = React.createClass({
+    render: function() {
+      return <div className="thumbnail">
+        <img src={this.props.imgUrl} alt="{this.props.alt}" />
+        <div className="caption">
+          <h3>{this.props.label}</h3>
+          <p>{this.props.description}</p>
+          <p>
+            <Badge title={this.props.title} number={this.props.number}/>
+          </p>
+        </div>
+      </div>
+    }
+  });
+
+  var ThumbnailList = React.createClass({
+    render: function() {
+      var list = this.props.thumbnailData.map(function(thumbnailProps) {
+        return <Thumbnail {...thumbnailProps} />;
+      });
+      return <div>
+        {list}
+      </div>;
+    }
+  });
+
+  var options = {
+    thumbnailData: [{
+    title: "See more sharks!",
+    number: 100,
+    imgUrl: "http://sharkopedia.discovery.com/wp-content/uploads/2015/06/record-breakers-3-10.jpg",
+    label: "Tiger Shark!",
+    description: "Tiger sharks are pretty cool!",
+  },{
+    title: "See more elephants!",
+    number: 50,
+    imgUrl: "http://www.livescience.com/images/i/000/036/988/original/elephants.jpg?interpolation=lanczos-none&downsize=*:1000",
+    label: "Elephants!",
+    description: "Elephants are pretty big!",
+  },{
+    title: "See more giraffes!",
+    number: 25,
+    imgUrl: "https://7068-presscdn-0-62-pagely.netdna-ssl.com/wp-content/uploads/2015/07/baby-giraffe-by-frontier-official-294x300.png",
+    label: "Giraffes!",
+    description: "Giraffes are funny looking!",
+  }]
+}
+
+  var element = React.createElement(ThumbnailList, options);
+
+  ReactDOM.render(element, document.querySelector('.target'));
+</script>
