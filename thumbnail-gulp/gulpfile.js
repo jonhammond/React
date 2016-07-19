@@ -1,14 +1,13 @@
-var gulp = require('gulp');
-var react = require('gulp-react');
-var concat = require('gulp-concat');
+var gulp = require('gulp'); // Responsible for build process
+var gutil = require('gulp-util'); // Responsible for printing to CLI
+var source = require('vinyl-source-stream'); // Responsible for moving text files during the build process
+var browserify = require('browserify'); // Load order
+var watchify = require('watchify'); // Tool to automatically re-compile jsx to JS
+var reactify = require('reactify'); // Convert jsx into JS
 
 gulp.task('default', function() {
-  // Get all files in src directory
-  return gulp.src('src/**')
-    // Then run gulp-react to compile jsx to js
-    .pipe(react())
-    // Then combine all files into application.js
-    .pipe(concat('application.js'))
-    // Then save file in current directory
-    .pipe(gulp, dest('./'))
+  // Create a bundler to run browserify on code
+  var bundler = watchify(browserify({
+    entries: 
+  }))
 })
