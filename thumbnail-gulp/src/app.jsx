@@ -1,3 +1,6 @@
+var React = require('react');
+var ThumbnailList = require('./ThumbnailList');
+
 var options = {
   thumbnailData: [{
   title: "See more sharks!",
